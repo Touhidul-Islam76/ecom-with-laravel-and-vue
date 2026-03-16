@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('short_desc')->nullable();
             $table->decimal('price', 10, 2);
             $table->enum('discount_type', ['fixed', 'percent'])->nullable();
-            $table->integer('discount');
+            $table->integer('discount')->nullable();
             $table->decimal('discounted_price', 10, 2)->nullable();
             $table->boolean('stock')->default(true);
             $table->string('image');
