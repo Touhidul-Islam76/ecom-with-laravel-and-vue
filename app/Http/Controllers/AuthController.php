@@ -21,12 +21,10 @@ class AuthController extends Controller
                 'otp' => $otp
             ]);
 
-        } else {
-
+        }else{
             $user->update([
                 'otp' => $otp
             ]);
-
         }
 
         Mail::raw('Your OTP is: ' . $otp, function ($message) use ($req) {
@@ -42,7 +40,10 @@ class AuthController extends Controller
         if(!$user){
             return $this->error(['Invalid OTP or email']);
         }
-
+        
+        $user->update([
+            'otp' => null
+        ]);
          $accessToken = $user->createToken('authToken')->plainTextToken;
          return $this->success(['access_token' => $accessToken], 'Login successful');
     }

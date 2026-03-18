@@ -14,4 +14,8 @@ class Cart extends Model
         'size',
         'color',
     ];
+
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
 }
