@@ -27,4 +27,17 @@ Route::group(['prefix' => 'v1'], function(){
         Route::post('delete/cart', [ShoppingCartController::class,'removeToCart']);
         Route::post('flash/cart', [ShoppingCartController::class,'flashCart']);
     });
+
+    Route::get('success',function(){
+        return response()->json(['message' => 'success']);
+    });
+    Route::get('failed',function(){
+        return response()->json(['message' => 'failed']);
+    });
+    Route::get('canceled',function(){
+        return response()->json(['message' => 'canceled']);
+    });
+    Route::get('ipn',function(){
+        return response()->json(['message' => 'ipn']);
+    });
 });
